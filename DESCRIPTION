@@ -1,12 +1,18 @@
 Package: KoBoAPI
-Title: What the Package Does (One Line, Title Case)
+Title: R interface to access KoBo API
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Mark Benedict", "Mortera",,"markbenedictmortera@gmail.com",role = c("aut", "cre"))
+Description: This package allows easy access and manipulation of data in KoBo Toolbox, leveraging v2 API
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Imports: 
+    httr,
+    jsonlite,
+    methods,
+    XML
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
