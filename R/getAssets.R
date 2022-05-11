@@ -1,4 +1,4 @@
-#' Get/extract list of assets in you KoBo account. Wraps the getKoBo function to obtain the data frame or extract the data frame from the JSON output.
+#' Get/extract list of assets in you KoBo account. Wraps  function to obtain the data frame or extract the data frame from the JSON output.
 #'
 #' @param .data (optional) the JSON output of a prior call to the asset endpoint
 #' @param .username username for your KoBo account. If there is no prior call to the asset endpoint you have to make a new call
