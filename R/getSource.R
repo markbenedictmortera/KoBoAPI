@@ -1,17 +1,16 @@
-#' Title
+#' Download the xls source file for the questionnaire
 #'
-#' @param .id The asset id of the source xls. This will be used as the file name.
-#' @param .url The URL for the source xml/xls
-#' @param .username the username used to authenticate the API call
-#' @param .password the password used to authenticate the API call
+#' @param .id asset id of the source xls. This will be used as the file name.
+#' @param .auth list containing username, password or token. Only either the token, or the username and password is needed.
+#' If both are provided token is used.
+#' @param .version the API version to use
 #' @return Save the source xls
 #' @export
 #'
 #' @examples
 getSource <- function(.id,
-                      .username,
-                      .password,
-                      .server = getOption("kobo_server")) {
+                      .auth,
+                      .version = "v2") {
 
   if(!(methods::hasArg(.username)&methods::hasArg(.password))) {
     stop("Username and password is missing")
@@ -30,5 +29,4 @@ getSource <- function(.id,
               .password),
       "raw")
   )
-
 }

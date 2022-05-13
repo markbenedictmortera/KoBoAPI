@@ -11,7 +11,7 @@
 #' @examples
 #' endpoints <- list(assets = "https://kf.kobotoolbox.org/api/v2/assets")
 #' auth <- list(username = "username" , password = "password")
-#' assets <- getKoBo(endpoints$assets, .auth = auth)
+#' assets <- getKoBo(endpoints$assets$v2, .auth = auth)
 #'
 #' ##To extract the JSON in the results:
 #' assets <- jsonlite::fromJSON(httr::content(assets, "text"))
@@ -20,7 +20,7 @@
 #' auth <- list(token = "Token")
 getKoBo <- function(.url,
                     .auth) {
-  if(!is.list(.auth)) {
+  if(!methods::hasArg(.auth)|!is.list(.auth)) {
     stop(".auth must be a list of credentials containing either the username and password, or the token")
          }
   if("token"%in%ls(.auth)) {
