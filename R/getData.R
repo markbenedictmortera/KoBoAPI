@@ -12,8 +12,8 @@
 getData <- function(.id, .auth, .version = "v2") {
   if(!methods::hasArg(.id)|!is.character(.id)) {stop(".id must be a string")}
   .url <- switch(.version,
-         v1 = paste0(endpoints$data$v1, .id, ".csv"),
-         v2 = paste0(endpoints$data$v2, .id, "/data")
+         v1 = paste0(endpoints$data["v1"], .id, ".csv"),
+         v2 = paste0(endpoints$data["v2"], .id, "/data")
   )
   getKoBo(.url,
           .auth)

@@ -21,33 +21,28 @@ getAssets <- function(.data,
                        .auth)
   }
 
-  .assets <- httr::content(
+  .assets <- jsonlite::fromJSON(
+    httr::content(
       .assets,
       "text"
-      )
+      ))
 
-  if(.version == "v1") {
-    .asset_df <- jsonlite::fromJSON(
-      .assets,
-      T
+  if(.version == "v2") {
+    .asset_df <-  data.frame(
+      name = .assets$results$name,
+      id = .assets$results$uid,
+      url = .assets$results$url,
+      date_created = .assets$results$date_created,
+      date_modified = .assets$results$date_modified,
+      owner = .assets$results$owner,
+      owner = .assets$results$owner__username,
+      n_submissions = .assets$results$deployment__submission_count,
+      description = .assets$results$settings$description,
+      tags = .assets$results$tag_string,
+      active = .assets$results$deployment__active,
+      asset_type = .assets$results$asset_type,
+      data_link = .assets$results$data,
+      source_link = gsub("/$", ".xls", .assets$results$url)
       )
-    } else {
-      .asset_df <-  data.frame(
-        name = .assets$results$name,
-        id = .assets$results$uid,
-        url = .assets$results$url,
-        date_created = .assets$results$date_created,
-        date_modified = .assets$results$date_modified,
-        owner = .assets$results$owner,
-        n_submissions = .assets$results$deployment__submission_count,
-        description = .assets$results$settings$description,
-        tags = .assets$results$tag_string,
-        active = .assets$results$deployment__active,
-        asset_type = .assets$results$asset_type,
-        data_link = .assets$results$data,
-        source_link = gsub("/$", ".xls", .assets$results$url),
-        owner = .assets$results$owner__username,
-        )
     }
-  print(.asset_df)
 }
