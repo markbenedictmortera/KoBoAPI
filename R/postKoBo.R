@@ -15,10 +15,4 @@ postKoBo <- function(.url, .payload, .auth) {
     stop(".auth must be a list of credentials containing either the username and password, or the token")
   }
 
-
-
-
-
-
-
-}
+  httr::PATCH(url, auth, body = payload, content_type_json())}
